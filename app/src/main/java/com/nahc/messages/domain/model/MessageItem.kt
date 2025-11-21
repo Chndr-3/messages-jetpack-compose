@@ -1,6 +1,6 @@
 package com.nahc.messages.domain.model
 
-data class Message(
+data class MessageItem(
     val id: String,
-    val text: String,
+    val message: String,
 )

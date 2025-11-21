@@ -1,4 +1,4 @@
-package com.nahc.messages.domain.model
+package com.nahc.messages.data.models
 
 data class ApiResponse(
     val message: String,
