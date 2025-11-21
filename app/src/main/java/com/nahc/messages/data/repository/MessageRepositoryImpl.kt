@@ -9,7 +9,9 @@ import javax.inject.Inject
 
 class MessageRepositoryImpl @Inject constructor(private val messageApi: MessageService): MessageRepository  {
     override suspend fun getListMessages(): List<MessageItem> {
-       return messageApi.getListMessages()
+        return messageApi.getListMessages()
+           .values
+           .map { it.toDomain() }
     }
 
     override suspend fun postMessages(text: String): ApiResponse {

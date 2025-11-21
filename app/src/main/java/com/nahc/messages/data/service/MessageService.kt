@@ -1,6 +1,7 @@
 package com.nahc.messages.data.service
 
 import com.nahc.messages.data.models.ApiResponse
+import com.nahc.messages.data.models.MessageItemDto
 import com.nahc.messages.domain.model.MessageItem
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.Body
@@ -10,7 +11,7 @@ import retrofit2.http.Path
 
 interface MessageService {
     @GET("messages")
-    suspend fun getListMessages(): List<MessageItem>
+    suspend fun getListMessages(): Map<String, MessageItemDto>
 
     @POST("messages")
     suspend fun postMessages(@Body text: String): ApiResponse

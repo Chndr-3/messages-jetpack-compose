@@ -1,5 +1,6 @@
 package com.nahc.messages.data.di
 
+import com.nahc.messages.BuildConfig
 import com.nahc.messages.data.repository.MessageRepositoryImpl
 import com.nahc.messages.data.service.MessageService
 import com.nahc.messages.domain.repository.MessageRepository
@@ -25,7 +26,7 @@ object AppModule {
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.example.com/")
+            .baseUrl(BuildConfig.BASE_URL)
             .client(client).addConverterFactory(GsonConverterFactory.create())
             .build()
 

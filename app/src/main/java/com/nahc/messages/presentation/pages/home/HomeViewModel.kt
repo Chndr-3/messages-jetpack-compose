@@ -1,5 +1,6 @@
 package com.nahc.messages.presentation.pages.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nahc.messages.domain.usecase.GetListMessagesUseCase
@@ -8,6 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import okhttp3.internal.concurrent.TaskRunner.Companion.logger
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,6 +32,7 @@ class HomeViewModel @Inject constructor(
                 val data = getListMessagesUseCase()  // suspend call
                 _uiState.value = HomeUiState.Success(data)
             } catch (e: Exception) {
+                Log.e("MessageRepository", "getListMessages error: ${e.message}", e)
                 _uiState.value =
                     HomeUiState.Error(e.message ?: "An unexpected error occurred")
             }
